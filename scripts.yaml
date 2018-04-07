@@ -1,0 +1,11 @@
+call_scene:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.movies
+
+message_temperature:
+  sequence:
+    # This is Home Assistant Script Syntax
+    - service: notify.notify
+      data_template:
+        message: Current temperature is {{ states.sensor.temperature.state }}

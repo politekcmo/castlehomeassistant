@@ -1,0 +1,26 @@
+binary_sensor.hub:
+  hidden: true
+camera.foscam_camera:
+  friendly_name: Front Porch Cam
+binary_sensor.hallway_thermostat_fan:
+  hidden: true
+sensor.hallway_thermostat_humidity:
+  hidden: true
+sensor.hallway_thermostat_operation_mode:
+  hidden: true
+sensor.jphone_battery_level:
+  hidden: true
+sensor.jphone_battery_state:
+  hidden: true
+binary_sensor.gang:
+  hidden: true
+binary_sensor.wink_relays_bottom_button:
+  hidden: true
+binary_sensor.wink_relays_top_button:
+  hidden: true
+sensor.stevesiev_battery_state:
+  hidden: true
+sensor.stevesiev_battery_level:
+  hidden: true
+binary_sensor.wink_relay:
+  hidden: true
