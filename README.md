@@ -16,6 +16,7 @@ My [Home Assistant](https://home-assistant.io/) installation is running on my se
 * [OS X Server](https://www.apple.com/macos/server/) :
 * [Ubiquiti Unifi Controller](https://unifi-sdn.ubnt.com) : 
 * A print server for an ex-UPS Zebra LP2844 4x6 Label Printer
+* [Let's Encrypt](https://letsencrypt.org) : Free, Open, Automated SSL/TLS Certificate Authority Service
 
 ## In the future I hope to:
 
