@@ -1,4 +1,4 @@
-*
+/*  #the slash enables directory inclusion
 .DS_Store
 secrets.yaml
 !.gitignore
@@ -7,4 +7,5 @@ secrets.yaml
 !scenes.yaml
 !customization.yaml
 !README.md
-!/automation
+!/automation/  #include this WHOLE directory except otherwise noted exclusions
+
