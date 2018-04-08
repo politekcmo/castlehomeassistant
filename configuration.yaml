@@ -1,0 +1,235 @@
+homeassistant:
+  customize: !include customize.yaml
+# Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 39.093162
+  longitude: -94.5927
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 247
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automation
+scene: !include scenes.yaml
+script: !include scripts.yaml
+
+
+ios:
+#discovery:
+# Show links to resources in log and frontend
+introduction:
+# Enables the frontend
+frontend:
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+   api_password: <redacted>
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+sensor:
+  - platform: darksky
+    api_key: <redacted>
+    monitored_conditions:
+      - summary
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      - temperature
+      
+# Discover some devices automatically
+camera:
+   - platform: foscam
+     ip: 10.0.1.51
+     username: admin
+     password: <redacted>
+
+zone:
+  name: Home
+  latitude: 39.0000
+  longitude: -94.0000
+  radius: 300
+  icon: mdi:home
+zone 2:
+  name: Work
+  latitude: 39.0001
+  longitude: -94.0001
+  radius: 200
+  icon: mdi:work
+
+device_tracker:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+wink:
+  # email: <redacted>
+  # password: <redacted>
+  # client_id: <redacted>
+  # client_secret: <redacted>
+  # local_control: true
+  #
+  #
+
+
+binary_sensor:
+
+#this section includes the binary sensor configuration for MQTT sensors I made using esp8266 board(s)
+
+  # - platform: mqtt
+  #   state_topic: home/sensortoMQTT/backdoor
+  #   name: “Back Door State”
+  #   payload_on: 0
+  #   payload_off: 1
+  #
+  # - platform: mqtt
+  #   state_topic: home/sensortoMQTT/frontdoor
+  #   name: “IS THE FRONT DOOR OPEN?”
+  #   payload_on: 1
+  #   payload_off: 0
+  #   device_class: opening
+  #
+  #
+
+switch:
+  - platform: broadlink
+    name: "broadlink RMPRO"
+    host: 10.0.1.250
+    mac: <’xx:xx:xx:xx:xx:xx’>
+    switches:
+       screen:
+          friendly_name: "BROJECTOR SCREEN"
+          command_on: ‘long command redacted’
+          command_off: '‘long command redacted’'
+
+       screen_light:
+          friendly_name: "Screen Light"
+          command_on: '‘long command redacted’/AAAAAAAA'
+          command_off: '‘long command redacted’/AAAAAAAA'
+
+       new_switch:
+          friendly_name: "Side Light"
+          command_on: '‘long command redacted’+AAAAAAAA'
+          command_off: '‘long command redacted’/AAAAAAAA'
+
+       deer_crown:
+          friendly_name: "Deer Crown"
+          command_on: '‘long command redacted’/AAAAAAAA'
+          command_off: '‘long command redacted’+AAAAAAAA'
+
+       stand_light:
+          friendly_name: "Stand Light"
+          command_on: '‘long command redacted’+AAAAAAAA'
+          command_off: '‘long command redacted’+AAAAAAAA'
+
+
+
+
+##    - platform: mqtt
+  ##    name: "MQTT RF Temperature"
+    ##  state_topic: "home/DHTtoMQTT/dht1/temp"
+    ##  unit_of_measurement: "°C"
+    ##  value_template: '{{ value | round(2)  }}'
+
+##    - platform: mqtt
+  ##    name: "MQTT RF Humidity"
+    ##  state_topic: "home/DHTtoMQTT/dht1/hum"
+      ##unit_of_measurement: "%"
+      ##value_template: '{{ value | round(2)  }}'
+
+
+
+nest:
+  client_id: <redacted>
+  client_secret: <redacted>
+  binary_sensors:
+    monitored_conditions:
+      - 'fan'
+      - ‘has_leaf’
+
+climate:
+   platform: nest
+
+
+
+light:
+
+
+    - platform: template
+      lights:
+        tv:
+          friendly_name: "tv"
+          turn_on:
+            service: script.turn_tv_on
+          turn_off:
+            service: script.turn_tv_off
+          set_level:
+            service: script.turn_tv_off
+
+    - platform: mqtt
+      name: Kitchen Ambient
+      state_topic: stat/kitchenambient/POWER
+      command_topic: cmnd/kitchenambient/power
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: true    #
+
+    - platform: mqtt
+      name: Cork Lamp
+      state_topic: stat/corklamp/POWER
+      command_topic: cmnd/corklamp/power
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: true
+
+    - platform: mqtt
+      name: Stereo
+      state_topic: stat/stereo/POWER
+      command_topic: cmnd/stereo/power
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: true
+
+
+
+media_player:
+  - platform: plex
+    entity_namespace: 'plex'
+    include_non_clients: false
+    scan_interval: 5
+    show_all_controls: false
+    use_custom_entity_ids: true
+    use_episode_art: true
+
+notify:
+    - platform: ios
+
+# logger:
+#     default: debug
+#     logs:
+#        # homeassistant.components.mqtt: debug

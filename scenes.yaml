@@ -1,0 +1,16 @@
+  - name: Night
+    entities:
+      light.tv_back_light: on
+      light.ceiling:
+        state: on
+        xy_color: [0.33, 0.66]
+        brightness: 200
+  - name: Movies
+    entities:
+      broadlink.send_packet_10_0_1_250 :
+        data:
+          packet:
+            -
+              "eADsAAUOEAUFDhAEEAQPBQYOBQ8FDgYOBg4GDgYOBQ8PBQ8EBpkGDgYOBQ8PBAYPDwQGDg8FBg4PBQUPDwQQBBAFBQ4FDwUPBQ8FDgYPBQ4GDg8FDwUFmgUOBg4GDhAEBQ8PBQUPDwQGDhAEBg4PBQ8FDwQGDgYOBg4GDgYOBQ8FDwUPDwQQBAaZBQ8GDgUOEAUFDhAEBg4PBQYODwQGDhAEEAQQBAYOBg4FDwUOBg4GDgYOBg4PBQ8FBZkGDgYOBg4PBQUPDwUFDhAFBQ4QBAYODwUPBQ8FBQ4GDgYOBg4FDwUPBQ8FDw8EEAQGAAXcAAAAAAAAAAAAAAAA"
+      light.deer_crown:
+        state: off
