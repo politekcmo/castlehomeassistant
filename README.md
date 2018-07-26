@@ -6,31 +6,36 @@ I still need to configure !secret for sensitive information, so for the time bei
 
 My [Home Assistant](https://home-assistant.io/) installation is running on my server, Castle, which is a custom-built machine running OS X.  At the moment, it is a striking balance between power and efficiency on what could be considered consumer / gamer hardware.
 
-***insert castle specs***
+***Castle Specs***
 
+* Intel i7-3700k
+* 16gb DDR3 @ 1600mhz
+* Gigabyte Ivy Bridge Motherboard (OS X compatible chipset)
+* 2x 128gb ssd in OS X software RAID
+* 4x WD Red 8TB (shucked from WD USB 3.0 Drives, see /r/datahoarders :) )
+* Silverstone GD06 (admittedly tough to house many HDD's in here, but it works!)
 
 ## What Castle Runs:
 
-* [Homebridge](https://github.com/home-assistant/homebridge-homeassistant) :
-* [Plex Media Server](https://www.plex.tv/) :
-* [OS X Server](https://www.apple.com/macos/server/) :
-* [Ubiquiti Unifi Controller](https://unifi-sdn.ubnt.com) : 
+* [Homebridge](https://github.com/home-assistant/homebridge-homeassistant)
+* [Plex Media Server](https://www.plex.tv/)
+* [OS X Server](https://www.apple.com/macos/server/)
+* [Ubiquiti Unifi Controller](https://unifi-sdn.ubnt.com) 
 * A print server for an ex-UPS Zebra LP2844 4x6 Label Printer
 * [Let's Encrypt](https://letsencrypt.org) : Free, Open, Automated SSL/TLS Certificate Authority Service
 
 ## In the future I hope to:
 
-* Receive and implement the Xaiomi Aqara Hub & Sensors I ordered recently
-* Implement real version control by not just cloning my current config with redactions and implementing !secret
+* Implement real version control by not just cloning my current config with redactions and implementing !secret (In Progress)
 * Add more lighting controls and automation based on movement/presence
-* Build/create inobtrusive "status lights" for security, weather, etc
+* Build/create inobtrusive "status lights" for security, weather, etc (In Progress)
 * Migrate to different hardware, potentially a real server build
 * Implement [Pi-Hole](https://pi-hole.net/) and its component for HA: [Sensor](https://home-assistant.io/components/sensor.pi_hole/)
 * Switch to Docker
 * [Abode home security](https://home-assistant.io/components/alarm_control_panel.abode/)
 
 ## Hardware used in my setup:
-  * 
+  
   * Networking
     * Google GFRG Fiber Converter
     * Ubiquiti Edgerouter X    
@@ -44,14 +49,15 @@ My [Home Assistant](https://home-assistant.io/) installation is running on my se
 
   * Lights and Switches
     * Lutron Caseta
+    * Lutron IR Wireless Dimmer
     * Wink Relay (two gang on/off switch and dashboard that was purchased as a Cyber Monday closeout deal)
     * esp8266 Plugs running Tasmota
     * Sonoff Original inside a Lamp
     
   * Security & Presence Detection
     * iOS Presence Detection
-    *  (TBI) XaioMi Aqara Motion & Sensors
-    *  (TBI) XaioMi Aqara Door/Window Sensors
+    * XaioMi Aqara Motion & Sensors
+    * XaioMi Aqara Door/Window Sensors
  
     
   * Media
@@ -59,6 +65,8 @@ My [Home Assistant](https://home-assistant.io/) installation is running on my se
     * Apple TV 4
     * Apple Airport Express - Four zones additional to the Home Theater, not particularly integrated into my HA setup, but useful for music in the kitchen, dining room, and shower.
     * Pioneer Connected HTR
+    * Epson HT Projector
+    * FAVI drop
     * Google Chromecast 2, Audio
     * Amazon Fire TV Stick
  
